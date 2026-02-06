@@ -1,4 +1,6 @@
-﻿namespace _00___TileCost_Calculator
+﻿using static System.Collections.Specialized.BitVector32;
+
+namespace _00___TileCost_Calculator
 {
     internal class Program
     {
@@ -6,21 +8,12 @@
         const int PRICE_PER_HOUR = 86;
         const int OPTION_RECTANGLE = 1;
         const int OPTION_TRIANGLE = 2;
+        const int OPTION_NONE = 0;
 
         static void Main(string[] args)
         {
-            int selection = GetShapeSelection(args);
-
-            int surface = 0;
-            switch (selection)
-            {
-                case OPTION_RECTANGLE:
-                    surface = PerformCalculationForRectangle();
-                    break;
-                case OPTION_TRIANGLE:
-                    surface = PerformCalculationForTriangle();
-                    break;
-            }
+            int shape = GetShapeSelection(args);
+            int surface = CalculateSurface(shape);
             WriteCost(surface);
         }
 
@@ -32,6 +25,19 @@
             int selection = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
             return selection;
+        }
+
+        static int CalculateSurface(int shape)
+        {
+            switch (shape)
+            {
+                case OPTION_RECTANGLE:
+                    return PerformCalculationForRectangle();
+                case OPTION_TRIANGLE:
+                    return PerformCalculationForTriangle();
+                default:
+                    return OPTION_NONE;
+            }
         }
 
         static int PerformCalculationForRectangle()
