@@ -10,8 +10,6 @@
         static void Main(string[] args)
         {
             SecondTask(args);
-
-            Console.WriteLine("Hello, World!");
         }
 
         static void FirstTask(string[] args)
@@ -33,12 +31,12 @@
         static void SecondTask(string[] args)
         {
             Console.WriteLine("Please pick a shape:");
-            Console.WriteLine("1 - Rectangle");
-            Console.WriteLine("2 - Triangle");
-
+            Console.WriteLine($"{OPTION_RECTANGLE} - Rectangle");
+            Console.WriteLine($"{OPTION_TRIANGLE} - Triangle");
             int selection = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
 
-            switch(selection)
+            switch (selection)
             {
                 case OPTION_RECTANGLE:
                     PerformCalculationForRectangle();
