@@ -4,8 +4,8 @@ namespace _00___TileCost_Calculator
 {
     internal class Program
     {
-        const int SQUARE_FEET_PER_HOUR = 20;
-        const int PRICE_PER_HOUR = 86;
+        const double SQUARE_FEET_PER_HOUR = 20;
+        const double PRICE_PER_HOUR = 86;
         const int OPTION_RECTANGLE = 1;
         const int OPTION_TRIANGLE = 2;
         const int OPTION_NONE = 0;
@@ -13,7 +13,7 @@ namespace _00___TileCost_Calculator
         static void Main(string[] args)
         {
             int shape = GetShapeSelection(args);
-            int surface = CalculateSurface(shape);
+            double surface = CalculateSurface(shape);
             WriteCost(surface);
         }
 
@@ -27,7 +27,7 @@ namespace _00___TileCost_Calculator
             return selection;
         }
 
-        static int CalculateSurface(int shape)
+        static double CalculateSurface(int shape)
         {
             switch (shape)
             {
@@ -40,35 +40,35 @@ namespace _00___TileCost_Calculator
             }
         }
 
-        static int PerformCalculationForRectangle()
+        static double PerformCalculationForRectangle()
         {
             Console.WriteLine("Please enter the width:");
-            int width = Convert.ToInt32(Console.ReadLine());
+            double width = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
             Console.WriteLine("Please enter the length:");
-            int length = Convert.ToInt32(Console.ReadLine());
+            double length = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
             return width * length;
         }
 
-        static int PerformCalculationForTriangle()
+        static double PerformCalculationForTriangle()
         {
             Console.WriteLine("Please enter the width:");
-            int width = Convert.ToInt32(Console.ReadLine());
+            double width = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
             Console.WriteLine("Please enter the length:");
-            int length = Convert.ToInt32(Console.ReadLine());
+            double length = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
-            return width * length / 2;
+            return width * length / 2.0;
         }
 
-        static void WriteCost(int surface)
+        static void WriteCost(double surface)
         {
-            int cost = surface * PRICE_PER_HOUR / SQUARE_FEET_PER_HOUR;
+            double cost = surface * PRICE_PER_HOUR / SQUARE_FEET_PER_HOUR;
             Console.WriteLine($"The surface is: {surface}");
             Console.WriteLine($"The cost is: ${cost}");
         }
